@@ -115,7 +115,7 @@ $("#newPersonButton").on("click", function(event){
 
 
 	function randomAddToList(first, last, num, title, review, salary){
-		var reviewNum= "review"+employeeList.lastReviewScore;
+		var reviewNum= "review"+newPersonReviewScore;
 		$("#employeeChart").prepend("<div class='employee "+reviewNum+"'><p>"
 			+first+"</p><p>"+last+"</p><p>"+num+"</p><p>"+title+"</p><p>"+review+
 			"</p><p>"+salary+" </p><br><button id='removeButton'>x</button></div>");
