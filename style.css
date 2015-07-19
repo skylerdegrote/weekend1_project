@@ -1,0 +1,62 @@
+
+body{
+	width: 1350px;
+	margin-left:20px;
+}
+
+form{
+	padding: 15px;
+}
+form p{
+	float: left;
+	margin-right:10px;
+}
+form input{
+	float: left;
+	margin-top: 15px;
+	margin-right:10px;
+	background-color: #dddddd;
+	color: #000000;
+	font-size: 11px;
+}
+button{
+	padding: 5px;
+	margin-top:12px;
+}
+#employeeChart p{
+	width: 175px;
+	margin-left: 30px;
+}
+#randomEmployeeChart p{
+	width: 175px;
+	margin-left: 30px;
+}
+.employee p{
+	width: 135px;
+	float: left;
+}
+.clearfix{
+	clear: both;
+}
+.review1{
+	background-color: #A32924;
+	float: left;
+	color:#ffdfff;
+}
+.review2{
+	background-color: #ff44ff;
+	float: left;
+
+}
+.review3{
+	float: left;
+	background-color: #FFA500;
+}
+.review4{
+	float: left;
+	background-color: #94CD4B;
+}
+.review5{
+	float: left;
+		background-color: #00CDCD;
+}
