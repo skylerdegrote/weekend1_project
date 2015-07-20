@@ -32,7 +32,15 @@ $(document).ready(function(){
 		$(this).closest(".employee").remove();
 	});//this button is working now!
 
-
+function sum(){
+	for(i=0; i>employeeArray.length; i++){
+		employeeArray[i].salary = parseInt(employeeArray[i].salary);
+		var sumOfSalary = employeeArray[i].salary;
+		i++
+		sumOfSalary = sumOfSalary+employeeArray[i].salary;
+		return sumOfSalary;
+}$("#salarySum").append("<div>"+sumOfSalary+"</div>");
+}
 
 	console.log(employeeArray);
 	$("#employeeInfoForm").submit(function(event){
@@ -69,6 +77,9 @@ $(document).ready(function(){
 	});//end the employeeInfoForm function
 	
 	
+
+		
+
 
 	
 //start randomizer
@@ -127,12 +138,11 @@ $(document).ready(function(){
 
 
 
-for(i=0; i>employeeArray.length; i++){
-	
-}
-$("#salarySum").append("<div>"+employeeArray[i].salary+"</div>");
 
-	console.log(employeeArray);
+
+console.log(employeeArray);
+console.log(sum());
+
 	});
 
 
