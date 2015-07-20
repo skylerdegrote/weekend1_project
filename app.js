@@ -1,5 +1,23 @@
 $(document).ready(function(){
 	console.log("The Page is Ready!");
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	var employeeArray=[];
 
 
@@ -12,15 +30,7 @@ $(document).ready(function(){
 		}
 		employeeArray.pop();
 		$(this).closest(".employee").remove();
-			
-
-
-
-
 	});//this button is working now!
-
-
-
 
 
 
@@ -60,7 +70,6 @@ $(document).ready(function(){
 	
 	
 
-
 	
 //start randomizer
 	function randomperson (min, max) {
@@ -76,9 +85,9 @@ $(document).ready(function(){
 	}; 
 */
 
+
 	$("#newPersonButton").on("click", function(event){
 		event.preventDefault(); //prevents the default event of the page refreshing
-
 		var employeeList={};
 	function Person(){
 		    this.firstName = firstName[randomperson(0,19)];;
@@ -103,8 +112,6 @@ $(document).ready(function(){
 			
 		
 		
-		
-
 
 
 	function randomAddToList(first, last, num, title, review, salary){
@@ -114,11 +121,34 @@ $(document).ready(function(){
 			"</p><p>"+salary+" </p><button id='removeButton'>Fire this Person</button></div>");
 	}
 
+
+
+
+
+
+
+for(i=0; i>employeeArray.length; i++){
+	
+}
+$("#salarySum").append("<div>"+employeeArray[i].salary+"</div>");
+
 	console.log(employeeArray);
 	});
 
 
+			
 
+
+
+
+
+
+
+
+
+
+
+	
 
 });//end document ready function
 
