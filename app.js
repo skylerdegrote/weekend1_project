@@ -1,18 +1,30 @@
 $(document).ready(function(){
 	console.log("The Page is Ready!");
+	var employeeArray=[];
 
 
-$("body").on("click", "#removeButton", function(){
-	$(this).closest(".employee").remove();
-});//this button is working now!
+	$("body").on("click", "#removeButton", function(){
+		var deletedPerson = parseInt($(this).closest("#employeeChart").find(".employee").text());	
+		for(var i=0; i<employeeArray.length; i++){
+			if (deletedPerson == employeeArray[i].employeeNumber){
+				employeeArray[i]=employeeArray[employeeArray.length-1];
+			}
+		}
+		employeeArray.pop();
+		$(this).closest(".employee").remove();
+			
+
+
+
+
+	});//this button is working now!
 
 
 
 
 
 
-var employeeArray=[];
-
+	console.log(employeeArray);
 	$("#employeeInfoForm").submit(function(event){
 		event.preventDefault(); //prevents the default event of the page refreshing
 
@@ -21,33 +33,29 @@ var employeeArray=[];
 		$inputs.each(function(){
 			employeeList[this.name] = $(this).val();//the values[this.name] is instead of values.firstName. can use spaces (but shouldn't) in bracket notation
 		});
-		var firstName= "First Name: "+employeeList.firstName;
-		var lastName="Last Name: "+employeeList.lastName;
-		var employeeNumber="Employee Number: "+employeeList.employeeNumber;
-		var employeeTitle="Employee Title: "+employeeList.employeeTitle;
-		var lastReviewScore="Review Score: "+employeeList.lastReviewScore;
-		var salary="Salary: "+employeeList.salary;
-		var listOfEmployees = addToList(employeeList.firstName, employeeList.lastName, employeeList.employeeNumber, employeeList.employeeTitle, employeeList.lastReviewScore, employeeList.salary);
+		var firstName = employeeList.firstName;
+		var lastName = employeeList.lastName;
+		var employeeNumber = employeeList.employeeNumber;
+		var employeeTitle = employeeList.employeeTitle;
+		var lastReviewScore = employeeList.lastReviewScore;
+		var salary = employeeList.salary;
+		addToList(firstName, lastName, employeeNumber, employeeTitle, lastReviewScore, salary);
 
 
 
 
 	function addToList(first, last, num, title, review, salary){
 		var reviewNum= "review"+employeeList.lastReviewScore;
+
 		$("#employeeChart").prepend("<div class='employee "+reviewNum+"'><p>"
 			+first+"</p><p>"+last+"</p><p>"+num+"</p><p>"+title+"</p><p>"+review+
-			"</p><p>"+salary+" </p><br><button id='removeButton'>x</button></div>");
+			"</p><p>"+salary+" </p><button id='removeButton'>Fire this Person</button></div>");
 	}
 
-
-
-
-
-
-	function list (){
-		employeeArray.push(".employee");
-	}
-
+	employeeArray.push(employeeList);
+	console.log(employeeList);
+	console.log(employeeArray);
+	
 	});//end the employeeInfoForm function
 	
 	
@@ -58,87 +66,61 @@ var employeeArray=[];
 	function randomperson (min, max) {
 		return Math.floor(Math.random() * (1 + max - min) + min);
     }
-    function person(first, last, num, employeeTitle, review, salary){
-		     this.first = first;
-		     this.last = last;
-		     this.num = num;
-		     this.employeeTitle=employeeTitle;
-		     this.review=review;
-		     this.salary=salary;
+    /*function person(first, last, num, employeeTitle, review, salary){
+		    this.firstNameChoice = first;
+		    this.lastNameChoice = last;
+		    this.num = num;
+		    this.employeeTitle = employeeTitle;
+		    this.newPersonReviewScore = review;
+		    this.salary = salary;
 	}; 
+*/
 
-	/*$("#newPersonButton").on("click",function(){
-		var newPersonTitle = ["Graphic Designer", "Senior Graphic Designer", "Junior Developer", "Project Manager", "Secretary", "Senior Developer", "Web Designer", "Software Engineer", "Garbage Person", "Director"];
-		var titleChoice = newPersonTitle[randomperson(0,9)];
-		var newPersonReviewScore = randomperson(1,5);
-		var newPersonSalary = randomperson(100, 200000);
-		var newPersonEmployeeNumber = randomperson(1111, 9999)
-		var firstName = ["James", "John", "Andrew", "Paul", "Pete", "Jack", "Nathan", "Scott", "Joel", "Eric", "Beth", "Jen", "Samantha", "Steff", "Mary", "Liz", "Carol", "Michelle", "Jess", "Amy"];
-		var lastName = ["Brown", "Smith", "Johnson", "Miller", "Anderson", "Harris", "Mcckinley", "Lincoln", "Kennedy", "Martin"];
-		var firstNameChoice = firstName[randomperson(0,19)];;
-		var lastNameChoice = lastName[randomperson(0,9)];
-
-
-		
-		
-		$(".newPersonFirstName").append("<p>  " + firstNameChoice + " </p>");
-		$(".newPersonLastName").append("<p>  " + lastNameChoice + " </p>");
-		$(".newPersonEmployeeNumber").append("<p>  " + newPersonEmployeeNumber + " </p>");
-		$(".newPersonTitle").append("<p>  " + titleChoice + " </p>");
-		$(".newPersonReviewScore").append("<p>  " + newPersonReviewScore + " </p>");
-		$(".newPersonSalary").append("<p>  " + newPersonSalary + " </p>");
-
-	
-
-	});*/
-
-
-
-
-$("#newPersonButton").on("click", function(event){
+	$("#newPersonButton").on("click", function(event){
 		event.preventDefault(); //prevents the default event of the page refreshing
 
 		var employeeList={};
+	function Person(){
+		    this.firstName = firstName[randomperson(0,19)];;
+		    this.lastName = lastName[randomperson(0,9)];;
+		    this.num = randomperson(1111, 9999);
+		    this.employeeTitle = newPersonTitle[randomperson(0,9)];;
+		    this.newPersonReviewScore = randomperson(1,5);;
+		    this.salary = randomperson(100, 200000);;
+	}; 
 		var newPersonTitle = ["Graphic Designer", "Senior Graphic Designer", "Junior Developer", "Project Manager", "Secretary", "Senior Developer", "Web Designer", "Software Engineer", "Garbage Person", "Director"];
-		var titleChoice = newPersonTitle[randomperson(0,9)];
-		var newPersonReviewScore = randomperson(1,5);
-		var newPersonSalary = randomperson(100, 200000);
-		var newPersonEmployeeNumber = randomperson(1111, 9999)
+		// var titleChoice = newPersonTitle[randomperson(0,9)];
+		// var newPersonReviewScore = randomperson(1,5);
+		// // var newPersonSalary = randomperson(100, 200000);
+		// var newPersonEmployeeNumber = randomperson(1111, 9999)
 		var firstName = ["James", "John", "Andrew", "Paul", "Pete", "Jack", "Nathan", "Scott", "Joel", "Eric", "Beth", "Jen", "Samantha", "Steff", "Mary", "Liz", "Carol", "Michelle", "Jess", "Amy"];
 		var lastName = ["Brown", "Smith", "Johnson", "Miller", "Anderson", "Harris", "Mcckinley", "Lincoln", "Kennedy", "Martin"];
-		var firstNameChoice = firstName[randomperson(0,19)];;
-		var lastNameChoice = lastName[randomperson(0,9)];
-
-		var listOfEmployees = randomAddToList(firstNameChoice,lastNameChoice, newPersonEmployeeNumber ,titleChoice, newPersonReviewScore, newPersonSalary);
-
+		// var firstNameChoice = firstName[randomperson(0,19)];
+		// var lastNameChoice = lastName[randomperson(0,9)];
+		var newRandomPerson = new Person();
+		employeeArray.push(newRandomPerson);
+		randomAddToList(newRandomPerson.firstName, newRandomPerson.lastName, newRandomPerson.num, newRandomPerson.employeeTitle, newRandomPerson.newPersonReviewScore, newRandomPerson.salary);
+			
+		
+		
+		
 
 
 
 	function randomAddToList(first, last, num, title, review, salary){
-		var reviewNum= "review"+newPersonReviewScore;
+		var reviewNum= "review"+review;
 		$("#employeeChart").prepend("<div class='employee "+reviewNum+"'><p>"
 			+first+"</p><p>"+last+"</p><p>"+num+"</p><p>"+title+"</p><p>"+review+
-			"</p><p>"+salary+" </p><br><button id='removeButton'>x</button></div>");
+			"</p><p>"+salary+" </p><button id='removeButton'>Fire this Person</button></div>");
 	}
 
-
-
-
-
-
-	function list (){
-		employeeArray.push(".employee");
-	}
-
+	console.log(employeeArray);
 	});
 
 
 
 
-
-
 });//end document ready function
-
 
 
 
